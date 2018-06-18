@@ -15,7 +15,6 @@ const int CONNECTED_BIT = BIT0;
 #include "lwip/err.h"
 #include "string.h"
 
-#define LED_BUILTIN 2
 #define AP_TARGET_SSID "ssid"
 #define AP_TARGET_PASSWORD "password"
 
@@ -173,8 +172,6 @@ int app_main(void)
 {
 	nvs_flash_init();
 	initialise_wifi();
-	gpio_pad_select_gpio(LED_BUILTIN);
-	gpio_set_direction(LED_BUILTIN, GPIO_MODE_OUTPUT);
 
 	xTaskCreate(&http_server, "http_server", 2048, NULL, 5, NULL);
 	return 0;
